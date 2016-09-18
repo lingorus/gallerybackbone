@@ -1,0 +1,14 @@
+galeries:
+  "Gallery 1":
+    "image_number": 5
+  "Gallery 2":
+    "image_number": 25
+  "Gallery 3":
+    "image_number": 37
+  "Gallery 4":
+    "image_number": 23
+  "Gallery 5":
+    "image_number": 27
+images:
+  - "image.jpg"
+  - "image2.jpg"
