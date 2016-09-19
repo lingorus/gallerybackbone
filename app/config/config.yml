@@ -64,3 +64,9 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+assetic:
+    filters:
+        coffee:
+            bin: /usr/local/bin/coffee
+            node: /usr/local/bin/node

@@ -8,6 +8,26 @@
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
+
+        {% block javascripts %}
+            <script
+                    src="{{ asset('assets/vendor/jquery/dist/jquery.js') }}"></script>
+            <script
+                    src="{{ asset('assets/vendor/underscore/underscore.js') }}"></script>
+            <script
+                  src="{{ asset('assets/vendor/backbone/backbone.js') }}"></script>
+            <script
+                    src="{{ asset('assets/vendor/backbone.radio/build/backbone.radio.js') }}"></script>
+
+            <script
+                  src="{{ asset('assets/vendor/backbone.marionette/lib/backbone.marionette.js') }}"></script>
+
+            {% javascripts output="/js/instant.js" filter="coffee"
+            '@AppBundle/Resources/public/js/application.coffee'
+            %}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
     </body>
 </html>
