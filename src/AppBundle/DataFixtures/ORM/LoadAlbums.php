@@ -2,7 +2,7 @@
 
 namespace AppBundle\DataFixtures\Orm;
 
-use AppBundle\Entity\Gallery;
+use AppBundle\Entity\Album;
 use AppBundle\Entity\Image;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -29,21 +29,21 @@ class LoadAlbums implements FixtureInterface
             $fs->copy($image->getRealPath(), $imageDir . '/' . $image->getFilename());
         }
 
-        $fixtures = Yaml::parse(file_get_contents(__DIR__.'/fixtures/galleries.yml'));
-        $galleries = $fixtures['galeries'];
+        $fixtures = Yaml::parse(file_get_contents(__DIR__ . '/fixtures/albums.yml'));
+        $albums = $fixtures['albums'];
         $images = $fixtures['images'];
-        foreach ($galleries as $key => $gallery) {
-            $newGallery = new Gallery();
-            $newGallery->setTitle($key);
+        foreach ($albums as $key => $album) {
+            $newAlbum = new Album();
+            $newAlbum->setTitle($key);
 
-            $manager->persist($newGallery);
+            $manager->persist($newAlbum);
 
-            foreach (range(1, $gallery['image_number']) as $item) {
+            foreach (range(1, $album['image_number']) as $item) {
                 $imageIndex = rand(0, count($images)-1);
                 $image = new Image();
                 $image
                     ->setImageUrl($images[$imageIndex])
-                    ->setGallery($newGallery)
+                    ->setAlbum($newAlbum)
                 ;
 
                 $manager->persist($image);

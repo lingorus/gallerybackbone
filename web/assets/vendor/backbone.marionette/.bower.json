@@ -1,9 +1,9 @@
 {
   "name": "backbone.marionette",
-  "description": "The Backbone Framework",
+  "description": "Make your Backbone.js apps dance with a composite application architecture!",
   "homepage": "http://marionettejs.org",
-  "main": "./lib/backbone.marionette.js",
-  "version": "3.0.0",
+  "main": "./lib/core/backbone.marionette.js",
+  "version": "2.4.7",
   "keywords": [
     "backbone",
     "framework",
@@ -11,6 +11,7 @@
     "browser",
     "composite"
   ],
+  "license": "MIT",
   "author": {
     "name": "Derick Bailey",
     "email": "derickbailey@gmail.com"
@@ -18,34 +19,35 @@
   "ignore": [
     "api",
     "docs",
-    "gulp",
     "jsdoc",
     "src",
     "tasks",
     "test",
-    ".babelrc",
     ".editorconfig",
-    ".eslintrc",
     ".gitignore",
     ".jscsrc",
+    ".jshintrc",
     ".npmignore",
     ".travis.yml",
+    "component.json",
     "CONTRIBUTING.md",
-    "gulpfile.babel.js",
+    "Gruntfile.js",
     "SpecRunner.html",
     "upgradeGuide.md"
   ],
   "dependencies": {
-    "backbone.radio": "2.0.0-pre.1"
+    "backbone": "1.0.0 - 1.3.x",
+    "underscore": "1.4.4 - 1.8.3",
+    "backbone.babysitter": "^0.1.0",
+    "backbone.wreqr": "^1.0.0"
   },
-  "_release": "3.0.0",
+  "_release": "2.4.7",
   "_resolution": {
     "type": "version",
-    "tag": "v3.0.0",
-    "commit": "d8bee8d66003f6935994f7f066235a8896f81d94"
+    "tag": "v2.4.7",
+    "commit": "e1a512a2f44fadfebe5c01e8966bdbe4fa5f9e51"
   },
   "_source": "https://github.com/marionettejs/backbone.marionette.git",
-  "_target": "^3.0.0",
-  "_originalSource": "backbone.marionette",
-  "_direct": true
+  "_target": "^2.4.7",
+  "_originalSource": "backbone.marionette"
 }

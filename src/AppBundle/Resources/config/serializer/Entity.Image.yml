@@ -1,0 +1,18 @@
+AppBundle\Entity\Image:
+  exclusion_policy: ALL
+  properties:
+    id:
+      expose: true
+      serialized_name: id
+      type: integer
+      groups: ["external"]
+    title:
+      expose: true
+      serialized_name: title
+      type: string
+      groups: ["external"]
+    imageUrl:
+      expose: true
+      serialized_name: url
+      type: string
+      groups: ["external"]

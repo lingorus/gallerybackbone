@@ -1,0 +1,22 @@
+AppBundle\Entity\Album:
+  exclusion_policy: ALL
+  properties:
+    id:
+      expose: true
+      serialized_name: id
+      type: integer
+      groups: ["external"]
+    title:
+      expose: true
+      serialized_name: title
+      type: string
+      groups: ["external"]
+  virtual_properties:
+    getFrontImage:
+      serialized_name: frontImage
+      type: AppBundle\Entity\Image
+      groups: ["external"]
+    getUrl:
+      serialized_name: url
+      type: string
+      groups: ["external"]

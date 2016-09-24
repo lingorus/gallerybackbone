@@ -23,8 +23,13 @@
             <script
                   src="{{ asset('assets/vendor/backbone.marionette/lib/backbone.marionette.js') }}"></script>
 
-            {% javascripts output="/js/instant.js" filter="coffee"
+            {% javascripts output="/js/instant.js"
+            '@AppBundle/Resources/public/js/models.coffee'
+            '@AppBundle/Resources/public/js/views.coffee'
             '@AppBundle/Resources/public/js/application.coffee'
+            '@AppBundle/Resources/public/js/router.coffee'
+            '@AppBundle/Resources/public/js/app.coffee'
+            filter="coffee"
             %}
                 <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}

@@ -25,10 +25,16 @@ class Image
     protected $imageUrl;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Gallery")
-     * @ORM\JoinColumn(name="gallery_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\Column(name="title" , type="string")
+     * @var string
      */
-    protected $gallery;
+    protected $title;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Album")
+     * @ORM\JoinColumn(name="album_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    protected $album;
 
 
     /**
@@ -58,21 +64,39 @@ class Image
     }
 
     /**
-     * @param mixed $gallery
+     * @param mixed $album
      * @return Image
      */
-    public function setGallery($gallery)
+    public function setAlbum($album)
     {
-        $this->gallery = $gallery;
+        $this->album = $album;
         return $this;
     }
 
     /**
      * @return mixed
      */
-    public function getGallery()
+    public function getAlbum()
     {
-        return $this->gallery;
+        return $this->album;
+    }
+
+    /**
+     * @param mixed $title
+     * @return Image
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 
 

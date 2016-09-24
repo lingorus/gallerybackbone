@@ -3,13 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\PersistentCollection;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="Gallery")
+ * @ORM\Entity(repositoryClass="AppBundle\Repositories\AlbumRepository")
+ * @ORM\Table(name="Album")
  * @author Vladislav Iavorskii
  */
-class Gallery
+class Album
 {
     /**
      * @ORM\Column(type="integer", name="id")
@@ -26,11 +27,10 @@ class Gallery
 
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Image", mappedBy="gallery", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Image", mappedBy="album", cascade={"persist", "remove"})
      * @var Image[]
      */
     protected $pictures;
-
 
     /**
      * @return mixed
@@ -42,7 +42,7 @@ class Gallery
 
     /**
      * @param string $title
-     * @return Gallery
+     * @return Album
      */
     public function setTitle($title)
     {
@@ -75,4 +75,25 @@ class Gallery
         $this->pictures = $pictures;
         return $this;
     }
+
+    public function getFrontImage()
+    {
+        /** @var PersistentCollection $pictures */
+        $pictures = $this->getPictures();
+        if ($pictures->count()) {
+            $slicedPictures = $pictures->slice(0, 1);
+            $picture = reset($slicedPictures);
+        } else {
+            $picture = null;
+        }
+
+        return $picture;
+    }
+
+    public function getUrl()
+    {
+        return "url";
+    }
+
+    
 }
