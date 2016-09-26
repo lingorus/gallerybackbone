@@ -33,6 +33,11 @@ class Album
     protected $pictures;
 
     /**
+     * @var string
+     */
+    private $url;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -92,7 +97,12 @@ class Album
 
     public function getUrl()
     {
-        return "url";
+        return $this->url;
+    }
+
+    public function setUrl($url)
+    {
+        $this->url = $url;
     }
 
     

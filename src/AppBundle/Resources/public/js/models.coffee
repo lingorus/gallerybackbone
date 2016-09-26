@@ -2,11 +2,15 @@
   defaults:
     title: 'image'
     url: 'image url'
-
-@.Album = Backbone.Collection.extend
+@.ImageCollection = Backbone.Collection.extend
   model: @.Image
-  url: "/albums/#{@.albumId}"
 
+@.AlbumDescription = Backbone.Model.extend({})
+
+
+@.Album = Backbone.Model.extend
+  url: ->
+    "/api/album/#{@.get('id')}/page/#{@.get('page')}"
 @.AlbumPreview = Backbone.Model.extend
   defaults:
     title: 'Album'
@@ -16,8 +20,4 @@
   model: @.AlbumPreview
   url: "/api/albums"
 
-@.Pagination = Backbone.Model.extend
-  defaults:
-    currentPage: 1
-    pages: [1]
-  url: "/api/pagination"
+@.Pagination = Backbone.Model.extend({})

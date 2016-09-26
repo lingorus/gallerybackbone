@@ -12,7 +12,7 @@ class ImageRepository extends EntityRepository
 {
     public function getImages(Album $album, $page, $imagesPerPage)
     {
-        $offset = ($imagesPerPage - 1) * $page;
-        return $this->findBy(['gallery' => $album, null, $imagesPerPage, $offset]);
+        $offset = $imagesPerPage * ($page - 1);
+        return $this->findBy(['album' => $album], null, $imagesPerPage, $offset);
     }
 }

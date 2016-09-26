@@ -22,6 +22,7 @@ class DefaultController extends Controller
 
     /**
      * @Route("/album/{id}", name="album_view")
+     * @Route("/album/{id}/page/{page}", name="album_view_page")
      */
     public function emailAction(Request $request)
     {

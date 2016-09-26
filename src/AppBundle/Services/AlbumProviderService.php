@@ -60,4 +60,31 @@ class AlbumProviderService
 
         return $albums;
     }
+
+    /**
+     * @param $id
+     * @return null|Album
+     */
+    public function getAlbum($id)
+    {
+        /** @var AlbumRepository $albumRepository */
+        $albumRepository = $this->entityManager->getRepository(Album::class);
+        $album = $albumRepository->findOneBy(["id" => $id]);
+
+        return $album;
+    }
+
+    public function getAlbumPagination(Album $album, $page)
+    {
+        $imageRepository = $this->entityManager->getRepository(Image::class);
+        $qb = $imageRepository->createQueryBuilder('im');
+        $qb->select($qb->expr()->count('im'))
+            ->where("im.album = :album")
+            ->setParameter("album", $album);
+        $query = $qb->getQuery();
+        $imageCount = $query->getSingleScalarResult();
+
+        $numberOfPages = floor($imageCount/$this->imagesPerPage) + ceil(fmod($imageCount/$this->imagesPerPage, 1));
+        return ['pages' => range(1, $numberOfPages), 'currentPage' => $page, 'albumId' => $album->getId()];
+    }
 }

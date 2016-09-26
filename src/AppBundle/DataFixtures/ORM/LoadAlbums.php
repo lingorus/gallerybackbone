@@ -42,7 +42,8 @@ class LoadAlbums implements FixtureInterface
                 $imageIndex = rand(0, count($images)-1);
                 $image = new Image();
                 $image
-                    ->setImageUrl($images[$imageIndex])
+                    ->setImageUrl('/bundles/app/images/' . $images[$imageIndex])
+                    ->setTitle($images[$imageIndex])
                     ->setAlbum($newAlbum)
                 ;
 

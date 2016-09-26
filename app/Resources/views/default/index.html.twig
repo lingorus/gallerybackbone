@@ -1,36 +1,60 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
     <section id="main">
-        <div id="gallery">
+        <div id="header" class="container"></div>
+        <div id="gallery" class="container"></div>
+        <div id="pagination" class="container"></div>
 
-        </div>
-        <div id="pagination">
-
-        </div>
 
     </section>
 
     <script type="text/html" id="album-view-template">
-        <div class="album">
-            <p><%= title %></p>
-            <a><%= url %></a>
+        <div class="photo">
+            <div class="photo-border">
+                <div class="photo-header">
+                    <a><%= title %></a>
+                </div>
+                <div class="photo-body">
+                    <img src="<%= frontImage.url %>" style="height: 100%; width: 100%">
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/html" id="image-view-template">
+        <div class="photo">
+            <div class="photo-border">
+                <div class="photo-header">
+                    <a><%= title %></a>
+                </div>
+                <div class="photo-body">
+                    <img src="<%= url %>" style="height: 100%; width: 100%">
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/html" id="album-header-view-template">
+        <div class="header">
+            <h1 align="center"><%= title %></h1>
         </div>
     </script>
 
     <script type="text/html" id="pagination-view-template">
-        <div class="album">
-            <% _.each(pages, function(page) { %>
-                <% if (page == currentPage) { %>
-                    <p style="color: red;"><%= page %></p>
-                <% } else { %>
-                    <p><%= page %></p>
-                <% } %>
-            <% }); %>
+        <div id="pagination" class="container">
+            <ul class="pagination">
+                <% _.each(pages, function(page) { %>
+                    <% if (page == currentPage) { %>
+                        <li ><a  class="active"><%= page %></a></li>
+                    <% } else { %>
+                        <li ><a class="paginationLink" data-page="<%= page %>"><%= page %></a></li>
+                    <% } %>
+                <% }); %>
+            </ul>
         </div>
     </script>
 {% endblock %}
 
 
-{% block stylesheets %}
-{% endblock %}

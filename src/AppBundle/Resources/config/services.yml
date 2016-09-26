@@ -1,5 +1,5 @@
 parameters:
-  appbundle.album.provider.images_per_page: 10
+  appbundle.album.provider.images_per_page: 9
   appbundle.album.provider.service.class: 'AppBundle\Services\AlbumProviderService'
 
 services:

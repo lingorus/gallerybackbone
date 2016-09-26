@@ -5,18 +5,24 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repositories\ImageRepository")
  * @ORM\Table(name="Image")
  * @author Vladislav Iavorskii
  */
 class Image
 {
+    
     /**
      * @ORM\Column(type="integer", name="id")
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Id
      */
     protected $id;
+
+    /**
+     * @var string
+     */
+    protected $imageDir;
 
     /**
      * @ORM\Column(name="image_url" , type="string")
@@ -98,6 +104,7 @@ class Image
     {
         return $this->title;
     }
+
 
 
 }
