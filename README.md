@@ -1,4 +1,8 @@
 test
 ====
+You need to run:
+1. composer install
+2. ./app/console doctrine:schema:create
+3. ./app/console doctrine:fixtures:load
 
-A Symfony project created on September 18, 2016, 4:39 pm.
+

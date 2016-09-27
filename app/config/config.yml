@@ -68,8 +68,8 @@ swiftmailer:
 assetic:
     filters:
         coffee:
-            bin: /usr/local/bin/coffee
-            node: /usr/local/bin/node
+            bin: "%kernel.root_dir%/../node_modules/coffee-script/bin/coffee"
+#            node: /usr/local/bin/node
 
 fos_rest:
     param_fetcher_listener: true
