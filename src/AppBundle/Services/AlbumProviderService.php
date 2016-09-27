@@ -34,6 +34,14 @@ class AlbumProviderService
         $this->imagesPerPage = $imagesPerPage;
     }
 
+    /**
+     * Get images by album.
+     *
+     * @param $albumId
+     * @param $page
+     * @return array
+     * @throws AlbumNotFoundException
+     */
     public function getAlbumImages($albumId, $page)
     {
         /** @var AlbumRepository $albumRepository */
@@ -52,6 +60,11 @@ class AlbumProviderService
         return $images;
     }
 
+    /**
+     * Ger list of albums
+     *
+     * @return array
+     */
     public function getAlbums()
     {
         /** @var AlbumRepository $albumRepository */
@@ -62,6 +75,8 @@ class AlbumProviderService
     }
 
     /**
+     * Get album by id.
+     *
      * @param $id
      * @return null|Album
      */
@@ -74,12 +89,19 @@ class AlbumProviderService
         return $album;
     }
 
+    /**
+     * Get pagination data.
+     *
+     * @param Album $album
+     * @param $page
+     * @return array
+     */
     public function getAlbumPagination(Album $album, $page)
     {
         $imageRepository = $this->entityManager->getRepository(Image::class);
         $imageCount = $imageRepository->getCount($album);
         $numberOfPages = floor($imageCount/$this->imagesPerPage) + ceil(fmod($imageCount/$this->imagesPerPage, 1));
-        
+
         return ['pages' => range(1, $numberOfPages), 'currentPage' => $page, 'albumId' => $album->getId()];
     }
 }

@@ -104,7 +104,4 @@ class Image
     {
         return $this->title;
     }
-
-
-
 }

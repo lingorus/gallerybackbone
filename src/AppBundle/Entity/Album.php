@@ -81,6 +81,11 @@ class Album
         return $this;
     }
 
+    /**
+     * Get front image.
+     *
+     * @return null
+     */
     public function getFrontImage()
     {
         /** @var PersistentCollection $pictures */
@@ -104,6 +109,4 @@ class Album
     {
         $this->url = $url;
     }
-
-    
 }

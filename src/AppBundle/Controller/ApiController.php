@@ -27,10 +27,13 @@ class ApiController extends Controller
     public function albumImagesAction(Request $request, $id, $page = 1)
     {
         $serializer = $this->get('serializer');
+
         $albumProvider = $this->get("appbundle.album.provider.service");
         $images = $albumProvider->getAlbumImages($id, $page);
+
         $album = $albumProvider->getAlbum($id);
         $album->setUrl($this->generateUrl('album_view', ['id' => $id]));
+
         $pagination = $albumProvider->getAlbumPagination($album, $page);
 
         $result = [
@@ -38,7 +41,7 @@ class ApiController extends Controller
             'description'   => $album,
             'pagination'    => $pagination
         ];
-        
+
         $response = new Response($serializer->serialize($result, 'json'));
         $response->headers->set('Content-Type', 'application/json');
 

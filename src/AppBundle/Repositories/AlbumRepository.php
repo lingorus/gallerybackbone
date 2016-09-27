@@ -2,7 +2,6 @@
 
 namespace AppBundle\Repositories;
 
-use AppBundle\Entity\Album;
 use Doctrine\ORM\EntityRepository;
 
 /**
